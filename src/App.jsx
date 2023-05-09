@@ -6,12 +6,14 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
     return (
         <>
             <Router>
                 <div>
+                    <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/dashboard" element={<Dashboard />} />
