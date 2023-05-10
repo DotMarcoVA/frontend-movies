@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import { getMovies, reset } from "../features/movies/movieSlice";
+import Card from "../components/Card/Card";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -39,6 +40,7 @@ const Dashboard = () => {
     return (
         <>
             <div>Este es un Dashboard</div>
+            <Card />
         </>
     );
 };
