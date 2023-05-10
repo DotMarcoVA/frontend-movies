@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
 
 const Register = () => {
+    const actualUser = localStorage.getItem("user");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -26,12 +27,12 @@ const Register = () => {
             toast.error(message);
         }
 
-        if (isSuccess) {
+        if (isSuccess || actualUser) {
             navigate("/login");
         }
 
         dispatch(reset());
-    }, [user, isError, isSuccess, message, navigate, dispatch]);
+    }, [user, isError, isSuccess, message, navigate, dispatch, actualUser]);
 
     const onChange = (e) => {
         setFormData((prevState) => ({
