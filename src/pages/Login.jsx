@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
+import Spinner from "../components/Spinner";
 
 const Login = () => {
     const actualUser = localStorage.getItem("user");
@@ -45,7 +46,7 @@ const Login = () => {
     };
 
     if (isLoading) {
-        return; // Aqui colocar un Loading Screen
+        return <Spinner />;
     }
 
     return (
