@@ -2,10 +2,18 @@ import React from "react";
 import Logo from "../../assets/jugar CText.png";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { logout, reset } from "../../features/auth/authSlice";
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
+
+    const onLogout = () => {
+        dispatch(logout());
+        dispatch(reset());
+        navigate("/login");
+    };
 
     return (
         <>
@@ -24,7 +32,18 @@ const Navbar = () => {
                         <div className="navbar-item">
                             <div className="buttons">
                                 {user ? (
-                                    <h1>Bienvenido {user}</h1>
+                                    <>
+                                        <div className="navbar-item">
+                                            <h1>Welcome {user.name}</h1>
+                                        </div>
+                                        <Link
+                                            to="/"
+                                            className="button is-primary"
+                                            onClick={onLogout}
+                                        >
+                                            <strong>Log Out</strong>
+                                        </Link>
+                                    </>
                                 ) : (
                                     <>
                                         <Link
