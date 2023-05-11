@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const API_URL = "https://red-beautiful-lobster.cyclic.app/api/movies"
-
+// const API_URL = "https://red-beautiful-lobster.cyclic.app/api/movies"
+const API_URL = "http://localhost:5000/api/movies"
 // Añadir Pelicula
 const createMovie = async (movieData, token) => {
     const config = {

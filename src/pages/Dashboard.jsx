@@ -35,12 +35,23 @@ const Dashboard = () => {
         return <Spinner />;
     }
 
-    console.log(movies);
+    if (!isLoading) {
+        console.log(movies);
+    }
 
     return (
         <>
             <div>Este es un Dashboard</div>
-            <Card />
+            <div className="columns is-multiline">
+                {movies.length < 1 ? (
+                    <></>
+                ) : (
+                    movies[0].map((m) => {
+                        return <Card key={m.id} data={m} />;
+                    })
+                )}
+                {}
+            </div>
         </>
     );
 };

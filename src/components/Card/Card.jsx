@@ -1,38 +1,44 @@
 import React from "react";
+import conversion from "../../functions/genreconvertion";
 
-const Card = () => {
+const Card = ({ data }) => {
+    let {
+        _id,
+        title,
+        overview,
+        genre,
+        poster_path,
+        trailer_path,
+        votes,
+        release_date,
+    } = data;
+
+    let genre1 = conversion(parseInt(genre[0], 10));
+    let genre2 = conversion(parseInt(genre[1], 10));
+
+    let cutOverview = overview.slice(0, 120) + "...";
+
     return (
         <>
-            <div className="card">
-                <div className="card-image">
-                    <figure className="image is-4by3">
-                        <img
-                            src="https://bulma.io/images/placeholders/1280x960.png"
-                            alt="Placeholder image"
-                        />
-                    </figure>
-                </div>
-                <div className="card-content">
-                    <div className="media">
-                        <div className="media-left">
-                            <figure className="image is-48x48">
-                                <img
-                                    src="https://bulma.io/images/placeholders/96x96.png"
-                                    alt="Placeholder image"
-                                />
-                            </figure>
-                        </div>
-                        <div className="media-content">
-                            <p className="title is-4">John Smith</p>
-                            <p className="subtitle is-6">@johnsmith</p>
-                        </div>
+            <div className="column is-3">
+                <div className="card">
+                    <div className="card-image">
+                        <figure className="image is-4by3">
+                            <img
+                                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                                alt="Placeholder image"
+                            />
+                        </figure>
                     </div>
-                    <div className="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                        <a href="#">#css</a> <a href="#">#responsive</a>
-                        <br />
-                        <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    <div className="card-content">
+                        <div className="media">
+                            <div className="media-content">
+                                <p className="title is-4">{title}</p>
+                                <p className="subtitle is-6">{`${genre1}, ${genre2}`}</p>
+                            </div>
+                        </div>
+                        <div className="content">{cutOverview}</div>
+                        <div className="content">{votes}</div>
                     </div>
                 </div>
             </div>
