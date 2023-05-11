@@ -36,6 +36,22 @@ const Navbar = () => {
                                         <div className="navbar-item">
                                             <h1>Welcome {user.name}</h1>
                                         </div>
+                                        {user.isAdmin ? (
+                                            <Link
+                                                to="/add"
+                                                className="button is-primary"
+                                            >
+                                                <strong>Add Movies</strong>
+                                            </Link>
+                                        ) : (
+                                            <></>
+                                        )}
+                                        <Link
+                                            to="/profile"
+                                            className="button is-primary"
+                                        >
+                                            <strong>My Account</strong>
+                                        </Link>
                                         <Link
                                             to="/"
                                             className="button is-primary"
