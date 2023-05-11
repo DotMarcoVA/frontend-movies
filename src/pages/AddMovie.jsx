@@ -35,7 +35,7 @@ const AddMovie = () => {
         (state) => state.movie
     );
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (isError) {
             toast.error(message);
         }
@@ -57,7 +57,7 @@ const AddMovie = () => {
         isError,
         message,
         isSuccess,
-    ]);
+    ]); */
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -69,8 +69,17 @@ const AddMovie = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (title) {
-            <></>;
+        if (
+            !title ||
+            !overview ||
+            !genre ||
+            !poster_path ||
+            !release_date ||
+            !votes
+        ) {
+            toast.error(
+                "Verifique todos los campos estan completos para continuar"
+            );
         } else {
             const movieData = {
                 title,
@@ -82,6 +91,7 @@ const AddMovie = () => {
                 votes,
             };
             dispatch(createMovie(movieData));
+            navigate("/dashboard");
         }
     };
 
@@ -119,37 +129,122 @@ const AddMovie = () => {
                 </div>
 
                 <div className="field">
-                    <label className="label">Genre</label>
+                    <label htmlFor="" className="label">
+                        Genres
+                    </label>
+                    <div className="select">
+                        <select id="genre" name="genre" onChange={onChange}>
+                            <option value="">None</option>
+                            <option value="28">Action</option>
+                            <option value="12">Adventure</option>
+                            <option value="16">Animation</option>
+                            <option value="35">Comedy</option>
+                            <option value="80">Crime</option>
+                            <option value="99">Documentary</option>
+                            <option value="18">Drama</option>
+                            <option value="10751">Family</option>
+                            <option value="14">Fantasy</option>
+                            <option value="36">History</option>
+                            <option value="27">Horror</option>
+                            <option value="10402">Music</option>
+                            <option value="9648">Mystery</option>
+                            <option value="10749">Romance</option>
+                            <option value="878">Science Fiction</option>
+                            <option value="10770">TV Movie</option>
+                            <option value="53">Thriller</option>
+                            <option value="10752">War</option>
+                            <option value="37">Western</option>
+                        </select>
+                    </div>
+
+                    <div className="select">
+                        <select id="genre" name="genre" onChange={onChange}>
+                            <option value="">None</option>
+                            <option value="28">Action</option>
+                            <option value="12">Adventure</option>
+                            <option value="16">Animation</option>
+                            <option value="35">Comedy</option>
+                            <option value="80">Crime</option>
+                            <option value="99">Documentary</option>
+                            <option value="18">Drama</option>
+                            <option value="10751">Family</option>
+                            <option value="14">Fantasy</option>
+                            <option value="36">History</option>
+                            <option value="27">Horror</option>
+                            <option value="10402">Music</option>
+                            <option value="9648">Mystery</option>
+                            <option value="10749">Romance</option>
+                            <option value="878">Science Fiction</option>
+                            <option value="10770">TV Movie</option>
+                            <option value="53">Thriller</option>
+                            <option value="10752">War</option>
+                            <option value="37">Western</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Poster Path</label>
                     <div className="control">
                         <input
                             className="input"
-                            type="password"
-                            name="password"
-                            id="password"
-                            value=""
-                            placeholder="********"
+                            type="text"
+                            name="poster_path"
+                            id="poster_path"
+                            value={poster_path}
+                            placeholder="/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg"
                             onChange={onChange}
                         />
                     </div>
                 </div>
 
                 <div className="field">
-                    <label className="label">Confirm Password</label>
+                    <label className="label">Trailer Path</label>
                     <div className="control">
                         <input
                             className="input"
-                            type="password"
-                            name="password2"
-                            id="password2"
-                            value=""
-                            placeholder="********"
+                            type="text"
+                            name="trailer_path"
+                            id="trailer_path"
+                            value={trailer_path}
+                            placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                            onChange={onChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Release Date</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="date"
+                            name="release_date"
+                            id="release_date"
+                            value={release_date}
+                            placeholder="YYYY-MM-DD"
+                            onChange={onChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="field">
+                    <label className="label">Actual Votes</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="number"
+                            name="votes"
+                            id="votes"
+                            value={votes}
+                            placeholder="1596"
                             onChange={onChange}
                         />
                     </div>
                 </div>
 
                 <button type="submit" className="button is-black">
-                    Create Account
+                    Submit Movie
                 </button>
             </form>
         </>
