@@ -1,0 +1,9 @@
+Need to add to the app:
+
+Search Input
+Filter Buttons
+Functional Like Button 
+Home Page
+Profile Page
+Favorites Page
+Trailer Viewer on Modal
