@@ -1,20 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import { getMovies, reset } from "../features/movies/movieSlice";
 import Card from "../components/Card/Card";
+import Modal from "../components/Modal/Modal";
 
 const Dashboard = () => {
+    const [data, setData] = useState(0);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    let modal1 = document.getElementById("modal1");
 
     const { user } = useSelector((state) => state.auth);
 
     const { movies, isLoading, isError, message } = useSelector(
         (state) => state.movie
     );
+
+    useEffect(() => {
+        if (!data) {
+            console.log("Data esta vacio");
+        } else {
+            console.log(data);
+            // modal1.classList.remove("is-active");
+        }
+    }, [data]);
 
     useEffect(() => {
         if (isError) {
@@ -41,16 +53,25 @@ const Dashboard = () => {
 
     return (
         <>
-            <div>Este es un Dashboard</div>
             <div className="columns is-multiline">
                 {movies.length < 1 ? (
                     <></>
                 ) : (
                     movies[0].map((m) => {
-                        return <Card key={m.id} data={m} />;
+                        return (
+                            <Card
+                                key={m.id}
+                                data={m}
+                                getData={(d) => setData(d)}
+                            />
+                        );
                     })
                 )}
-                {}
+                {Object.values(data).length != 0 ? (
+                    <Modal data={data} action={() => setData(0)}></Modal>
+                ) : (
+                    <></>
+                )}
             </div>
         </>
     );

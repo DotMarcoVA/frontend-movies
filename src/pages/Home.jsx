@@ -15,7 +15,7 @@ const Home = () => {
 
     return (
         <>
-            <div>Home</div>
+            <img src="https://http.cat/102" />
         </>
     );
 };

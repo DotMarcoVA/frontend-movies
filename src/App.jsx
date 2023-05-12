@@ -21,6 +21,10 @@ function App() {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
+                        <Route
+                            path="*"
+                            element={<img src="https://http.cat/404"></img>}
+                        />
                     </Routes>
                 </div>
             </Router>

@@ -1,7 +1,7 @@
 import React from "react";
 import conversion from "../../functions/genreconvertion";
 
-const Card = ({ data }) => {
+const Card = ({ data, getData }) => {
     let {
         _id,
         title,
@@ -13,6 +13,8 @@ const Card = ({ data }) => {
         release_date,
     } = data;
 
+    let cardData = data;
+
     let genre1 = conversion(parseInt(genre[0], 10));
     let genre2 = conversion(parseInt(genre[1], 10));
 
@@ -21,7 +23,7 @@ const Card = ({ data }) => {
     return (
         <>
             <div className="column is-3">
-                <div className="card">
+                <div className="card" onClick={() => getData(cardData)}>
                     <div className="card-image">
                         <figure className="image is-4by3">
                             <img
@@ -38,7 +40,9 @@ const Card = ({ data }) => {
                             </div>
                         </div>
                         <div className="content">{cutOverview}</div>
-                        <div className="content">{votes}</div>
+                        <div id={`like_${_id}`} className="button is-success">
+                            ❤ {votes}
+                        </div>
                     </div>
                 </div>
             </div>

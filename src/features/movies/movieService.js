@@ -31,7 +31,7 @@ const deleteMovie = async(id,token) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    const response = await axios.delete(API_URL + id, config);
+    const response = await axios.delete(`${API_URL}/${id}`, config);
     return response;
 }
 
@@ -42,7 +42,7 @@ const updateMovie = async(id, movieData, token) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    const response = await axios.put(API_URL + id, movieData, config);
+    const response = await axios.put(`${API_URL}/${id}`, movieData, config);
     return response;
 }
 const movieService = {
