@@ -8,15 +8,19 @@ const Profile = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { name, email, isAdmin } = user;
-    console.log(name, email, isAdmin);
+    let userName = name;
+    if (isAdmin) {
+        userName = `⭐ ${name} ⭐`;
+    }
 
     return (
         <>
             <div>
-                {name}
-                {email}
-                {isAdmin}
+                <p className="is-size-3 is-capitalized has-text-weight-semibold has-text-centered">
+                    Welcome {userName}
+                </p>
             </div>
+            <div>Favorites</div>
         </>
     );
 };
