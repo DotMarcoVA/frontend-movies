@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import cover from "../assets/1080p.jpg";
 
 const Home = () => {
     const actualUser = localStorage.getItem("user");
@@ -15,7 +16,9 @@ const Home = () => {
 
     return (
         <>
-            <img src="https://http.cat/102" />
+            <figure className="image is-16by9">
+                <img src={cover} />
+            </figure>
         </>
     );
 };
