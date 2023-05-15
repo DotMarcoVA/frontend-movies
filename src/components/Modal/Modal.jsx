@@ -16,6 +16,8 @@ const Modal = ({ data, action }) => {
     let genre1 = conversion(parseInt(genre[0], 10));
     let genre2 = conversion(parseInt(genre[1], 10));
 
+    let cutPath = trailer_path.slice(-11);
+
     return (
         <>
             <div id="modal1" className="modal is-active">
@@ -44,7 +46,7 @@ const Modal = ({ data, action }) => {
                                 className="has-ratio"
                                 width={640}
                                 height={360}
-                                src="https://www.youtube.com/embed/51S4llUG5QM"
+                                src={`https://www.youtube.com/embed/${cutPath}`}
                                 allowFullScreen
                             />
                         </figure>

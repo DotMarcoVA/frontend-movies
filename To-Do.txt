@@ -6,4 +6,4 @@ Functional Like Button
 Home Page
 Profile Page
 Favorites Page
-Trailer Viewer on Modal
+✔Trailer Viewer on Modal
