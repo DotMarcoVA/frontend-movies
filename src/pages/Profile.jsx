@@ -10,7 +10,7 @@ const Profile = () => {
     const { name, email, isAdmin } = user;
     let userName = name;
     if (isAdmin) {
-        userName = `⭐ ${name} ⭐`;
+        userName = `⭐👑 ${name} 👑⭐`;
     }
 
     return (
