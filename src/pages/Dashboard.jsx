@@ -53,6 +53,39 @@ const Dashboard = () => {
 
     return (
         <>
+            <div className="level">
+                <div className="level-left">
+                    <div className="level-item">
+                        <div className="field has-addons">
+                            <p className="control">
+                                <input
+                                    className="input is-rounded"
+                                    id="searchInput"
+                                    // onKeyUp={(e) => search(e)}
+                                    type="text"
+                                    placeholder="Search Movies by Name"
+                                />
+                            </p>
+                        </div>
+                    </div>
+                    <div className="level-item">
+                        <button
+                            className="button is-rounded"
+                            // onClick={() => topRated()}
+                        >
+                            Best Rated
+                        </button>
+                    </div>
+                </div>
+                <div className="level-right">
+                    <div className="level-item">
+                        <h2>Filter by Genre</h2>
+                    </div>
+                    <div className="level-item">
+                        {/* <Select action={(v) => genre(v)}></Select> */}
+                    </div>
+                </div>
+            </div>
             <div className="columns is-multiline">
                 {movies.length < 1 ? (
                     <></>
