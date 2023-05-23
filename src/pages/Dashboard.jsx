@@ -6,9 +6,12 @@ import Spinner from "../components/Spinner";
 import { getMovies, reset } from "../features/movies/movieSlice";
 import Card from "../components/Card/Card";
 import Modal from "../components/Modal/Modal";
+import Select from "../components/Select/Select";
 
 const Dashboard = () => {
     const [data, setData] = useState(0);
+    const [filter, setFilter] = useState([]);
+    const [list, setList] = useState();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     let modal1 = document.getElementById("modal1");
@@ -18,6 +21,21 @@ const Dashboard = () => {
     const { movies, isLoading, isError, message } = useSelector(
         (state) => state.movie
     );
+    /* setFilter(movies[0]);
+
+    const genre = (value) => {
+        if (value == "all") {
+            return setFilter(movies[0]);
+        }
+        let result = movies[0].filter((movie) => {
+            let gen1 = movie.genre_ids[0];
+            if (movie.genre_ids[1]) {
+                let gen2 = movie.genre_ids[1];
+            }
+            return gen1.toString().includes(value);
+        });
+        setFilter(result);
+    }; */
 
     useEffect(() => {
         if (!data) {
@@ -45,10 +63,6 @@ const Dashboard = () => {
 
     if (isLoading) {
         return <Spinner />;
-    }
-
-    if (!isLoading) {
-        console.log(movies);
     }
 
     return (
@@ -82,7 +96,7 @@ const Dashboard = () => {
                         <h2>Filter by Genre</h2>
                     </div>
                     <div className="level-item">
-                        {/* <Select action={(v) => genre(v)}></Select> */}
+                        <Select /* action={(v) => genre(v)} */></Select>
                     </div>
                 </div>
             </div>
