@@ -11,7 +11,7 @@ import Select from "../components/Select/Select";
 const Dashboard = () => {
     const [data, setData] = useState(0);
     const [filter, setFilter] = useState([]);
-    const [list, setList] = useState();
+    const [list, setList] = useState([]);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     let modal1 = document.getElementById("modal1");
@@ -36,15 +36,6 @@ const Dashboard = () => {
         });
         setFilter(result);
     }; */
-
-    useEffect(() => {
-        if (!data) {
-            console.log("Data esta vacio");
-        } else {
-            console.log(data);
-            // modal1.classList.remove("is-active");
-        }
-    }, [data]);
 
     useEffect(() => {
         if (isError) {
