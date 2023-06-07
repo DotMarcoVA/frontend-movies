@@ -1,6 +1,6 @@
 import React from "react";
 
-const Select = (action) => {
+const Select = ({ action }) => {
     return (
         <div className="select">
             <select

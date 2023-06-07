@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -21,21 +21,28 @@ const Dashboard = () => {
     const { movies, isLoading, isError, message } = useSelector(
         (state) => state.movie
     );
-    /* setFilter(movies[0]);
 
     const genre = (value) => {
         if (value == "all") {
             return setFilter(movies[0]);
         }
         let result = movies[0].filter((movie) => {
-            let gen1 = movie.genre_ids[0];
-            if (movie.genre_ids[1]) {
-                let gen2 = movie.genre_ids[1];
+            let gen1 = movie.genre[0];
+            if (movie.genre[1]) {
+                let gen2 = movie.genre[1];
             }
             return gen1.toString().includes(value);
         });
         setFilter(result);
-    }; */
+    };
+
+    const memoList = useMemo(() => {
+        if (filter.length > 0) {
+            return filter;
+        } else {
+            return movies[0];
+        }
+    }, [filter, movies]);
 
     useEffect(() => {
         if (isError) {
@@ -73,21 +80,14 @@ const Dashboard = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="level-item">
-                        <button
-                            className="button is-rounded"
-                            // onClick={() => topRated()}
-                        >
-                            Best Rated
-                        </button>
-                    </div>
+                    <div className="level-item"></div>
                 </div>
                 <div className="level-right">
                     <div className="level-item">
                         <h2>Filter by Genre</h2>
                     </div>
                     <div className="level-item">
-                        <Select /* action={(v) => genre(v)} */></Select>
+                        <Select action={(v) => genre(v)}></Select>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@ const Dashboard = () => {
                 {movies.length < 1 ? (
                     <></>
                 ) : (
-                    movies[0].map((m) => {
+                    memoList.map((m) => {
                         return (
                             <Card
                                 key={m.id}
